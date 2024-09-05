@@ -32,12 +32,22 @@ public class TwoKnights {
         }
     }
 
+    // Actual Solution 
+    public static void twoKnights1(int n){
+        for(int i = 1; i <= n; i++){
+            int totalWays = (i * i) * (i * i - 1) / 2;
+            int attackingWays = 4 * (i - 1) * (i - 2);
+            System.out.println(totalWays - attackingWays);
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         sc.close();
 
         twoKnights(n);
+        twoKnights1(n);
     }
     
 }
