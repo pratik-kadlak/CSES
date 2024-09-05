@@ -39,7 +39,6 @@ public class CreateStrings {
 		String firstLine = br.readLine();
 		
 		char[] ch = firstLine.toCharArray();
-		Arrays.sort(ch);
 		ArrayList<String> ans = new ArrayList<>();
 		createStrings(ch, 0, ch.length-1, ans);
 
