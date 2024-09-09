@@ -29,6 +29,24 @@ public class CollectingNumbers {
 		}
 		return rounds;
 	}
+
+    // Using Inversion
+	public static long collectingNumbers1(int[] nums){
+		int n = nums.length;
+		int[] map = new int[n+1];
+
+		for(int i = 0; i < nums.length; i++){
+			map[nums[i]] = i+1;
+		}
+
+		int inversions = 0;
+		for(int i = 2; i <= n; i++){
+			if(map[i] < map[i-1])
+				inversions++;
+		}
+
+		return inversions+1;
+	}
 	
 
 	public static void main(String[] args) throws IOException{
