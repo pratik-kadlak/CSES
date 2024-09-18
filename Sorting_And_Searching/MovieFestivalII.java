@@ -36,7 +36,6 @@ public class MovieFestivalII {
 				treemap.put(mv[1], treemap.getOrDefault(mv[1], 0)+1);
 			}
 		}
-
 		return canWatch;
 	}
  
