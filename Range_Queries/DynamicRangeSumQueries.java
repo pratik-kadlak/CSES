@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 
 public class DynamicRangeSumQueries {
 
-    static int[] segTree;
+    static long[] segTree;
 	static int size;
 
 	public static void init(int n){
@@ -16,7 +16,7 @@ public class DynamicRangeSumQueries {
 		while(size < n){
 			size *= 2;
 		}
-		segTree = new int[2 * size];
+		segTree = new long[2 * size];
 		for(int i = 0; i < segTree.length; i++){
 			set(i, 0);
 		}
@@ -39,18 +39,18 @@ public class DynamicRangeSumQueries {
 		set(idx, val, 0, 0, size);
 	}
 
-	public static int find(int l, int r, int x, int lx, int rx){
+	public static long find(int l, int r, int x, int lx, int rx){
 		if(r <= lx || l >= rx) return 0; 
 		if(l <= lx && r >= rx) return segTree[x];
 
 		int mid = (lx + rx) / 2;
-		int m1 = find(l, r, 2*x+1, lx, mid);
-		int m2 = find(l, r, 2*x+2, mid, rx);
+		long s1 = find(l, r, 2*x+1, lx, mid);
+		long s2 = find(l, r, 2*x+2, mid, rx);
 
-		return m1+m2;
+		return s1+s2;
 	}
 
-	public static int find(int l, int r){
+	public static long find(int l, int r){
 		return find(l, r, 0, 0, size);
 	}
 
