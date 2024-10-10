@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class RectangleCutting {
-    
+
     public static int rectangleCutting(int m, int n){
 		if(m > n) return rectangleCutting(n, m);
 
@@ -21,10 +21,12 @@ public class RectangleCutting {
 				if(i == j) continue;
 				dp[i][j] = (int) 1e9;
 
+                // try cutting at every row so new rectangles will be of len k and i-k
 				for(int k = 1; k < i; k++){
 					dp[i][j] = Math.min(dp[i][j], 1 + dp[i-k][j] + dp[k][j]);
 				}	
-
+                
+                // try cutting at every col so new rectagles will be of width k and j-k
 				for(int k = 1; k < j; k++){
 					dp[i][j] = Math.min(dp[i][j], 1 + dp[i][k] + dp[i][j-k]);
 				}
